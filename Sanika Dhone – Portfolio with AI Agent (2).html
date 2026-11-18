@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sanika Dhone – AI & ML Student</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF2F6;--surface:#fff;--ink:#1B2433;--muted:#556072;--line:#D3DBE4;--box:#2F5BFF;--boxtext:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10151D;--surface:#182030;--ink:#E8EDF4;--muted:#9AA7B8;--line:#2A3446;--box:#7C9BFF;--boxtext:#10151D}}
+:root[data-theme="dark"]{--bg:#10151D;--surface:#182030;--ink:#E8EDF4;--muted:#9AA7B8;--line:#2A3446;--box:#7C9BFF;--boxtext:#10151D}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth;color-scheme:light dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","IBM Plex Sans",sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--box);outline-offset:3px}
+.wrap{max-width:980px;margin:0 auto;padding:0 24px}
+nav{display:flex;gap:22px;flex-wrap:wrap;padding:22px 0;font-weight:500}
+nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--ink)}
+.hero{padding:56px 0 88px}
+.frame{position:relative;display:inline-block;padding:18px 26px 22px;border:3px solid var(--box);margin-top:30px}
+.frame::before{content:"person · 0.98";position:absolute;top:-30px;left:-3px;background:var(--box);color:var(--boxtext);font:500 14px/1 "IBM Plex Sans",sans-serif;padding:7px 10px}
+.frame i{position:absolute;width:12px;height:12px;background:var(--box)}
+.frame i:nth-child(1){top:-8px;right:-8px}.frame i:nth-child(2){bottom:-8px;left:-8px}.frame i:nth-child(3){bottom:-8px;right:-8px}
+h1{font-size:clamp(46px,10vw,104px);font-weight:800;letter-spacing:-.03em}
+.role{font:700 clamp(20px,3.4vw,30px)/1.25 "Bricolage Grotesque",sans-serif;margin:26px 0 12px}
+.lede{max-width:60ch;color:var(--muted);margin:0 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 20px;border:2px solid var(--ink);text-decoration:none;font-weight:500;background:none;color:var(--ink);font-family:inherit;font-size:inherit;cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--bg)}.btn:hover{border-color:var(--box)}
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(30px,5vw,44px);font-weight:700;margin-bottom:28px;letter-spacing:-.02em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.proj{background:var(--surface);border:1px solid var(--line);padding:32px;margin-bottom:24px}
+.proj h3{font-size:28px;margin-bottom:10px}.proj ul{padding-left:20px;margin:14px 0}
+.tag{font:500 13px/1 "IBM Plex Sans",sans-serif;color:var(--box);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none;margin:0}
+.chips li{border:1px solid var(--line);background:var(--surface);padding:5px 12px;font-size:15px}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px}
+.skills h3{font-size:19px;margin-bottom:10px}.skills p{margin:0;color:var(--muted)}
+.edu{display:grid;gap:18px}.edu div{border-left:3px solid var(--box);padding-left:16px}
+.edu strong{display:block}.edu span{color:var(--muted)}
+.contact a{font:700 clamp(22px,4.5vw,38px)/1.3 "Bricolage Grotesque",sans-serif;display:block;word-break:break-all}
+footer{padding:32px 0 48px;color:var(--muted);font-size:15px;border-top:1px solid var(--line)}
+/* agent */
+.agent{background:var(--surface);border:2px solid var(--box)}
+.ahead{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line);font-weight:500}
+.dot{width:10px;height:10px;border-radius:50%;background:#2DBE6C}
+.ahead small{color:var(--muted);margin-left:auto;font-size:13px}
+#log{height:340px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
+.m{max-width:85%;padding:10px 14px;white-space:pre-wrap;border:1px solid var(--line)}
+.m.bot{align-self:flex-start;background:var(--bg)}
+.m.me{align-self:flex-end;background:var(--box);color:var(--boxtext);border-color:var(--box)}
+.m.err{color:var(--muted);font-style:italic}
+.sug{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 14px}
+.sug button{border:1px solid var(--box);background:none;color:var(--ink);padding:6px 12px;font:inherit;font-size:14px;cursor:pointer}
+.sug button:hover{background:var(--box);color:var(--boxtext)}
+.row{display:flex;border-top:1px solid var(--line)}
+.row input{flex:1;min-width:0;border:0;background:none;color:var(--ink);padding:16px 18px;font:inherit}
+.row input:focus-visible{outline-offset:-3px}
+.row button{border:0;background:var(--box);color:var(--boxtext);padding:0 22px;font:500 16px "IBM Plex Sans",sans-serif;cursor:pointer}
+.row button:disabled{opacity:.5;cursor:default}
+@media(max-width:720px){.two{grid-template-columns:1fr;gap:28px}.hero{padding-bottom:56px}.m{max-width:94%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav aria-label="Main"><a href="#about">About</a><a href="#agent">Ask my AI</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a></nav>
+
+<header class="hero">
+  <div class="frame"><i></i><i></i><i></i><h1>Sanika<br>Dhone</h1></div>
+  <p class="role">AI &amp; Machine Learning student, building things that can see.</p>
+  <p class="lede">I’m a second-year AIML engineering student who likes turning ideas into working programs, from face recognition to Arduino circuits. I’m looking for chances to learn from professionals and build real projects.</p>
+  <div class="btns"><a class="btn primary" href="#agent">Ask my AI agent</a><a class="btn" href="#projects">See my projects</a></div>
+</header>
+
+<section id="about">
+  <h2>About me</h2>
+  <div class="two">
+    <p>I’m studying Artificial Intelligence and Machine Learning at St. John College of Engineering and Management, Palghar. I enjoy programming, exploring new technology and finding practical solutions to everyday problems.</p>
+    <p>I learn quickly, work well alone or in a team, and like collaborating with others. My goal is a career in AI and ML, growing my technical knowledge and contributing to innovative technology projects.</p>
+  </div>
+</section>
+
+<section id="agent">
+  <h2>Ask my AI agent</h2>
+  <p style="color:var(--muted);max-width:60ch;margin:-12px 0 24px">A small assistant that knows my projects, skills and education. Ask it anything a recruiter or teammate might want to know.</p>
+  <div class="agent">
+    <div class="ahead"><span class="dot" aria-hidden="true"></span>Sanika’s portfolio agent<small>Answers only from this portfolio</small></div>
+    <div id="log" role="log" aria-live="polite"><div class="m bot">Hi! I’m Sanika’s portfolio agent. Ask me about her projects, skills or education, or tap a question below.</div></div>
+    <div class="sug" id="sug">
+      <button>What is Sentinel?</button><button>How does the agent decide who is present?</button><button>What skills does Sanika have?</button><button>Tell me about the Arduino street light</button><button>How can I contact her?</button>
+    </div>
+    <form class="row" id="f" onsubmit="return false"><input id="q" placeholder="Type your question…" aria-label="Your question" autocomplete="off"><button id="go" type="submit">Ask</button></form>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <article class="proj">
+    <div class="tag">Featured · AI &amp; Computer Vision</div>
+    <h3>Sentinel – Roboflow Attendance Agent</h3>
+    <p>A browser-based attendance system where an AI agent takes the roll-call. It captures a camera frame, sends it to a Roboflow detection model, matches the label to a registered student and marks them present, but only if the confidence passes a threshold you set.</p>
+    <ul>
+      <li>Agent cycle: detect → identify → verify → decide → commit</li>
+      <li>Manual scan or autonomous scanning every 5, 8, 15 or 30 seconds</li>
+      <li>Never marks the same student twice on one day; low-confidence detections are discarded</li>
+      <li>Shows its reasoning live, with a dashboard, searchable records, CSV export and an activity log</li>
+      <li>Single HTML file with no server; demo mode lets the whole workflow run without a trained model</li>
+      <li>Passed 20 test cases (run twice); real-world accuracy depends on the model you connect</li>
+    </ul>
+    <ul class="chips" aria-label="Technologies"><li>HTML / CSS / JavaScript</li><li>Roboflow</li><li>Computer Vision</li><li>localStorage</li></ul>
+  </article>
+  <article class="proj">
+    <div class="tag">Embedded systems</div>
+    <h3>Arduino-Based Street Light System</h3>
+    <p>A low-voltage prototype that switches a lamp on at dusk and off at dawn. An LDR light sensor feeds an Arduino UNO, which compares the reading to a darkness level and turns an LED on or off.</p>
+    <ul>
+      <li>LDR and a fixed resistor form a voltage divider read on pin A0</li>
+      <li>LED on digital pin 9 through a 220–330 Ω resistor</li>
+      <li>Future ideas: motion sensors, PWM dimming, solar power, IoT monitoring</li>
+    </ul>
+    <ul class="chips" aria-label="Technologies"><li>Arduino UNO</li><li>LDR sensor</li><li>C / Arduino</li></ul>
+  </article>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div><h3>Programming</h3><p>Python, C</p></div>
+    <div><h3>Web development</h3><p>HTML, CSS, JavaScript</p></div>
+    <div><h3>Data</h3><p>DBMS and SQL basics</p></div>
+    <div><h3>AI &amp; ML</h3><p>Core AI and ML concepts, image processing, facial recognition</p></div>
+    <div><h3>Tools</h3><p>Visual Studio Code, Jupyter Notebook, MS Word, Excel, PowerPoint</p></div>
+    <div><h3>Working style</h3><p>Communication, teamwork, problem-solving, time management, critical thinking, adaptability</p></div>
+  </div>
+  <h3 style="font-size:19px;margin:44px 0 12px">Currently interested in</h3>
+  <ul class="chips"><li>Artificial Intelligence</li><li>Machine Learning</li><li>Deep Learning</li><li>Computer Vision</li><li>Natural Language Processing</li><li>Data Science</li><li>Web Development</li><li>Emerging technologies</li></ul>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="edu">
+    <div><strong>B.E. in Artificial Intelligence &amp; Machine Learning</strong><span>St. John College of Engineering and Management, Palghar · currently in second year</span></div>
+    <div><strong>Higher Secondary (12th)</strong><span>A.L.C Junior College · 2025</span></div>
+    <div><strong>Secondary School (10th)</strong><span>Little Angel’s English Medium School · 2023</span></div>
+  </div>
+  <h3 style="font-size:19px;margin:36px 0 8px">Languages</h3>
+  <ul class="chips"><li>Marathi</li><li>Hindi</li><li>English</li></ul>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <p style="color:var(--muted);max-width:50ch">Based in Wada, Maharashtra. I’m open to internships, collaborations and learning opportunities.</p>
+  <a href="mailto:sanikadhone07@gmail.com">sanikadhone07@gmail.com</a>
+</section>
+<footer>© Sanika Dhone</footer>
+</div>
+
+<script>
+const KB = `You are the portfolio assistant for Sanika Dhone. Answer ONLY from the facts below, in the third person ("Sanika..."), friendly and concise (max 120 words). If something is not covered, say you don't have that detail and suggest emailing her. Never invent employers, grades, awards or links.
+FACTS:
+- Sanika Dhone: second-year B.E. student in Artificial Intelligence & Machine Learning at St. John College of Engineering and Management, Palghar. Based in Wada, Maharashtra. Speaks Marathi, Hindi, English. 12th: A.L.C Junior College (2025). 10th: Little Angel's English Medium School (2023).
+- Goal: a career in AI/ML; looking for internships, collaborations and learning opportunities. Learns quickly, works alone or in a team.
+- Skills: Python, C; HTML, CSS, JavaScript; DBMS and SQL basics; core AI/ML concepts, image processing, facial recognition; tools: VS Code, Jupyter Notebook, MS Word, Excel, PowerPoint; soft skills: communication, teamwork, problem-solving, time management, critical thinking, adaptability. Interested in AI, ML, deep learning, computer vision, NLP, data science, web development.
+- Project 1, Sentinel (Roboflow Attendance Agent, report dated 17 Oct 2026): browser-based attendance system in one HTML file (about 500 lines of plain JavaScript, no framework, no server). An AI agent captures a webcam frame, sends it to a Roboflow hosted detection model, takes the top prediction, matches its class label to a registered student's roll number or name, checks confidence against a user-set threshold (50-99%, default 85%), checks the student isn't already present today, then saves the record. Agent cycle: detect, identify, verify, decide, commit; it shows reasoning lines live. Manual Scan Now or autonomous mode every 5/8/15/30 s. Six sections: Dashboard, Camera Agent, Students, Attendance (search, CSV export), Agent Logs (newest 150), Roboflow Setup. Data stays in browser localStorage. Demo mode (no API key) uses simulated random predictions at 80-97% confidence so the workflow can be tried without a trained model. Tested with 20 test cases, all passed twice; three AI-path cases used simulated Roboflow replies, so real model accuracy was NOT measured. Limitations: data only in one browser, API key exposed in browser (should use a backend), one student per scan, no login, no liveness/anti-spoofing check. Future scope: backend, several faces per frame, database, login, absent records, liveness checks, alerts, mobile version.
+- Project 2, Arduino-Based Street Light System: low-voltage educational prototype. LDR + fixed resistor voltage divider into pin A0 of an Arduino UNO; LED on digital pin 9 through 220-330 ohm resistor; lamp turns ON when dark, OFF in daylight. Components: Arduino UNO, LDR, LED + resistor, breadboard and wires, power source. Pros: automatic, can cut electricity waste, low cost. Cons: sensor affected by shadows/nearby lights, needs weatherproofing and safe relay/driver for real lamps. Safety: never connect mains lamps directly to Arduino pins. Future: solar, motion sensors, PWM dimming, IoT monitoring, energy measurement.
+- Contact: sanikadhone07@gmail.com (no phone number is shared publicly).`;
+const log=document.getElementById('log'),q=document.getElementById('q'),go=document.getElementById('go');
+let hist=[],busy=false,sample=null,asked=false;
+function add(cls,t){const d=document.createElement('div');d.className='m '+cls;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
+async function ask(text){
+  text=text.trim();if(!text||busy)return;
+  busy=true;go.disabled=true;q.value='';add('me',text);
+  const b=add('bot','Thinking…');
+  try{
+    if(!sample){sample=await claude.use('sample')}
+    if(!sample){b.className='m bot err';b.textContent='The live agent isn’t available in this view. Please email sanikadhone07@gmail.com and Sanika will reply.';return}
+    const convo=hist.slice(-6).map(h=>(h.r==='u'?'Visitor: ':'Agent: ')+h.t).join('\n');
+    const prompt=KB+'\n\nCONVERSATION SO FAR:\n'+(convo||'(none)')+'\n\nVisitor: '+text+'\nAgent:';
+    const r=await sample(prompt,{cache:false,modelTier:'quick',onText:({text:t})=>{b.textContent=t;log.scrollTop=log.scrollHeight}});
+    b.textContent=r.text;hist.push({r:'u',t:text},{r:'a',t:r.text});
+  }catch(e){
+    b.className='m bot err';
+    b.textContent=e&&e.code==='not_granted'?'Permission was declined, so I can’t answer. Reload and allow it, or email Sanika directly.':e&&e.code==='rate_limited'?'Too many questions too fast. Please try again in a moment.':'Sorry, something went wrong. Please try again.';
+  }finally{busy=false;go.disabled=false;q.focus({preventScroll:true})}
+}
+document.getElementById('f').addEventListener('submit',()=>ask(q.value));
+document.getElementById('sug').addEventListener('click',e=>{if(e.target.tagName==='BUTTON')ask(e.target.textContent)});
+</script>
+</body>
+</html>
